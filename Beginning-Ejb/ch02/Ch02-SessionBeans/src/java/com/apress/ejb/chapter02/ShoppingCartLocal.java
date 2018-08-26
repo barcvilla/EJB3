@@ -5,6 +5,7 @@
  */
 package com.apress.ejb.chapter02;
 
+import java.util.ArrayList;
 import javax.ejb.Local;
 
 /**
@@ -13,6 +14,8 @@ import javax.ejb.Local;
  */
 @Local
 public interface ShoppingCartLocal {
+    public void setCartItems(ArrayList cartItems);
+    public ArrayList getCartItems();
     public void addWineItem(String wine);
     public void removeWineItem(String wine);
     

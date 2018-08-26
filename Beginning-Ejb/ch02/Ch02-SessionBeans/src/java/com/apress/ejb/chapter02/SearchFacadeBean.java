@@ -19,11 +19,11 @@ import javax.interceptor.InvocationContext;
  * @author PC
  */
 @Stateless
-public class SearchFacedeBean implements SearchFacadeLocal, SearchFacadeRemote{
+public class SearchFacadeBean implements SearchFacadeLocal, SearchFacadeRemote{
 
     HashMap<String, String> countryMap = new HashMap<String, String>();
 
-    public SearchFacedeBean(){}
+    public SearchFacadeBean(){}
     
     @Override
     public List wineSearch(String wineType)

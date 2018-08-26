@@ -21,11 +21,13 @@ public class ShoppingCartBean implements ShoppingCartLocal, ShoppingCartRemote{
     private ArrayList cartItems;
     
     public ShoppingCartBean(){}
-
+    
+    @Override
     public ArrayList getCartItems() {
         return cartItems;
     }
-
+    
+    @Override
     public void setCartItems(ArrayList cartItems) {
         this.cartItems = cartItems;
     }

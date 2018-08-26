@@ -5,6 +5,7 @@
  */
 package com.apress.ejb.chapter02;
 
+import java.util.ArrayList;
 import javax.ejb.Remote;
 
 /**
@@ -13,5 +14,8 @@ import javax.ejb.Remote;
  */
 @Remote
 public interface ShoppingCartRemote {
-    
+    public void setCartItems(ArrayList cartItems);
+    public ArrayList getCartItems();
+    public void addWineItem(String wine);
+    public void removeWineItem(String wine);
 }
