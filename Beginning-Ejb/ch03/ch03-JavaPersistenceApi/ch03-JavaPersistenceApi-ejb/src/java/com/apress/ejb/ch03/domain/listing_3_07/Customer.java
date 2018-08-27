@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.apress.ejb.chapter03.listings.listing_3_07;
+package com.apress.ejb.ch03.domain.listing_3_07;
 
 import java.io.Serializable;
 import javax.persistence.Entity;
