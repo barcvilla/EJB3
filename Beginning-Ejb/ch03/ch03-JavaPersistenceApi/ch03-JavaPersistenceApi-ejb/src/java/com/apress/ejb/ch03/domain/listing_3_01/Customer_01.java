@@ -3,18 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.apress.ejb.ch03.domain;
+package com.apress.ejb.ch03.domain.listing_3_01;
 
 /**
  * Simple JavaBean
  * @author PC
  */
-public class Customer {
+public class Customer_01 {
     
     private int customerId;
-    private String name;
+    private String  name;
     
-    public Customer(){}
+    public Customer_01(){}
 
     public int getCustomerId() {
         return customerId;

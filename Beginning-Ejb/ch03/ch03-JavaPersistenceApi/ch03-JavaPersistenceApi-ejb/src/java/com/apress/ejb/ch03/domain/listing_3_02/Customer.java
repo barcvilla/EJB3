@@ -18,7 +18,7 @@ import javax.persistence.Id;
  * Todas las clase que no son marcadas como entidad son ignoradas por el proveedo de persistencia durante el despliegue
  * @author PC
  */
-@Entity
+@Entity(name = "customer02")
 public class Customer implements Serializable{
     @Id
     private int customerId;

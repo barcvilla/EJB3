@@ -3,15 +3,17 @@
     <persistence-unit name="Chapter03PersistenceUnit" transaction-type="JTA">
         <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
         <jta-data-source>jdbc/PersonaDb</jta-data-source>
-        <class>com.apress.ejb.ch03.domain.Address</class>
-        <class>com.apress.ejb.ch03.domain.Customer</class>
-        <class>com.apress.ejb.ch03.domain.CustomerOrder</class>
+        <class>com.apress.ejb.ch03.entities.Address</class>
+        <class>com.apress.ejb.ch03.entities.Customer</class>
+        <class>com.apress.ejb.ch03.entities.CustomerOrder</class>
         <exclude-unlisted-classes>false</exclude-unlisted-classes>
     </persistence-unit>
     
     <persistence-unit name="Chapter03PersistenceUnit-JSE" transaction-type="RESOURCE_LOCAL" >
         <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
-        <class>com.apress.ejb.ch03.domain.Customer</class>
+        <class>com.apress.ejb.ch03.entities.Customer</class>
+        <class>com.apress.ejb.ch03.entities.Address</class>
+        <class>com.apress.ejb.ch03.entities.CustomerOrder</class>
         <properties>
             <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/recursos_humanos?useSSL=false"/>
             <property name="javax.persistence.jdbc.user" value="root"/>
