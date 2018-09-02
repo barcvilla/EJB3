@@ -35,6 +35,8 @@ public class CustomerOrderController extends HttpServlet {
     
     @EJB
     CustomerServiceLocal customerServiceLocal;
+    
+    
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -56,8 +58,10 @@ public class CustomerOrderController extends HttpServlet {
         if(accion != null && accion.equals("verPedidos"))
         {
             List<CustomerOrder> customerOrders = customerOrderServiceLocal.getCustomerOrderFindById(customer);
-            log.debug(customerOrders.size());
+            Customer customerTitle = customerServiceLocal.findCustomerById(customer);
+            
             request.setAttribute("customerOrders", customerOrders);
+            request.setAttribute("title", customerTitle);
             request.getRequestDispatcher("customerOrders.jsp").forward(request, response);
             
             //List<CustomerOrder> customerOrders =  customerOrderServiceLocal.getAllOrdersByCustomerId(customer);

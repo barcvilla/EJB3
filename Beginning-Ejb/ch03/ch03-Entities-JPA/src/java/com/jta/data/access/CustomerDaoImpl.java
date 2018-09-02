@@ -28,7 +28,7 @@ public class CustomerDaoImpl implements CustomerDao{
 
     @Override
     public Customer findCustomerById(Customer customer) {
-        return em.find(Customer.class, customer);
+        return em.find(Customer.class, customer.getId());
     }
 
     @Override
