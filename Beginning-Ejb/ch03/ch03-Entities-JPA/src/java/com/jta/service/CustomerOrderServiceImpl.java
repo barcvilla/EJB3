@@ -3,32 +3,28 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.jta.data.access;
+package com.jta.service;
 
+import com.jta.data.access.CustomerOrderDao;
 import com.jta.entities.Customer;
 import com.jta.entities.CustomerOrder;
 import java.util.List;
+import javax.ejb.EJB;
 import javax.ejb.Stateless;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 
 /**
  *
  * @author PC
  */
 @Stateless
-public class CustomerOrderDaoImpl implements CustomerOrderDao{
+public class CustomerOrderServiceImpl implements CustomerOrderServiceLocal {
     
-    @PersistenceContext(unitName = "RRHHDB")
-    EntityManager em;
-    
+    @EJB
+    CustomerOrderDao customerOrderDao;
+
     @Override
     public List<CustomerOrder> getCustomerOrderFindById(Customer customer) {
-        return em.createNamedQuery("CustomerOrder.findByCustomerId", CustomerOrder.class)
-                .setParameter("customer_id", customer)
-                .getResultList();
+        return customerOrderDao.getCustomerOrderFindById(customer);
     }
-
-    
     
 }

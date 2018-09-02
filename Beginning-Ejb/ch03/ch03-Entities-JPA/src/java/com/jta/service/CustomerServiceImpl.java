@@ -28,7 +28,7 @@ public class CustomerServiceImpl implements CustomerServiceLocal{
 
     @Override
     public Customer findCustomerById(Customer customer) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return customerDao.findCustomerById(customer);
     }
 
     @Override

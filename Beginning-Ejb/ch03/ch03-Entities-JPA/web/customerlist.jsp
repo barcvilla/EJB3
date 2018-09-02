@@ -30,7 +30,7 @@
                     <td>${customer.shippingAddress}</td>
                     <td>${customer.email}</td>
                     <td>${customer.billingAddress}</td>
-                    <td><a href="CustomerController?accion=verPedidos&customer=${customer}">ver pedidos</a></td>
+                    <td><a href="CustomerOrderController?accion=verPedidos&customer=${customer.id}">ver pedidos</a></td>
                 </tr>
             </c:forEach>
         </table>

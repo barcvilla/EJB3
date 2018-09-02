@@ -6,6 +6,8 @@
 package com.jta.web;
 
 import com.jta.entities.Customer;
+import com.jta.entities.CustomerOrder;
+import com.jta.service.CustomerOrderServiceLocal;
 import com.jta.service.CustomerServiceLocal;
 import java.io.IOException;
 import java.util.List;
@@ -22,31 +24,17 @@ import org.apache.logging.log4j.Logger;
  *
  * @author PC
  */
-@WebServlet(name = "CustomerController", urlPatterns = {"/CustomerController"})
-public class CustomerController extends HttpServlet {
+@WebServlet(name = "CustomerOrderController", urlPatterns = {"/CustomerOrderController"})
+public class CustomerOrderController extends HttpServlet {
     
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 2L;
     static Logger log = LogManager.getRootLogger();
     
     @EJB
-    private CustomerServiceLocal customerServiceLocal;
-
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    protected void processCustomerList(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException 
-    {
-        List<Customer> customers = customerServiceLocal.findAllCustomers();
-        request.setAttribute("customers", customers);
-        request.getRequestDispatcher("customerlist.jsp").forward(request, response);
-    }
+    CustomerOrderServiceLocal customerOrderServiceLocal;
+    
+    @EJB
+    CustomerServiceLocal customerServiceLocal;
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -60,7 +48,26 @@ public class CustomerController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processCustomerList(request, response);
+        String accion = request.getParameter("accion");
+        String customerId = request.getParameter("customer");
+        
+        Customer customer = new Customer(Integer.valueOf(customerId));
+        
+        if(accion != null && accion.equals("verPedidos"))
+        {
+            List<CustomerOrder> customerOrders = customerOrderServiceLocal.getCustomerOrderFindById(customer);
+            log.debug(customerOrders.size());
+            request.setAttribute("customerOrders", customerOrders);
+            request.getRequestDispatcher("customerOrders.jsp").forward(request, response);
+            
+            //List<CustomerOrder> customerOrders =  customerOrderServiceLocal.getAllOrdersByCustomerId(customer);
+            //Customer customerTitle = customerServiceLocal.findCustomerById(customer);
+            
+            /**
+            request.setAttribute("customer", customerTitle);
+            
+            */
+        }
     }
 
     /**

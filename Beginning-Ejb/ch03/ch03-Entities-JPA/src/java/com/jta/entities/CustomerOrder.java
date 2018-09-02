@@ -31,7 +31,7 @@ import javax.validation.constraints.Size;
 @NamedQueries({
     @NamedQuery(name = "CustomerOrder.findAll", query = "SELECT c FROM CustomerOrder c")
     , @NamedQuery(name = "CustomerOrder.findById", query = "SELECT c FROM CustomerOrder c WHERE c.id = :id")
-   , @NamedQuery(name = "CustomerOrder.findById", query = "SELECT c FROM CustomerOrder c WHERE c.id = :customer")
+    , @NamedQuery(name = "CustomerOrder.findByCustomerId", query = "SELECT c FROM CustomerOrder c WHERE c.customerId = :customer_id")
     , @NamedQuery(name = "CustomerOrder.findByCreationDate", query = "SELECT c FROM CustomerOrder c WHERE c.creationDate = :creationDate")
     , @NamedQuery(name = "CustomerOrder.findByStatus", query = "SELECT c FROM CustomerOrder c WHERE c.status = :status")
     , @NamedQuery(name = "CustomerOrder.findByTotal", query = "SELECT c FROM CustomerOrder c WHERE c.total = :total")})
@@ -56,7 +56,7 @@ public class CustomerOrder implements Serializable {
     @Column(name = "total")
     private BigDecimal total;
     
-    @JoinColumn(name = "customer_id", referencedColumnName = "cusotmer")
+    @JoinColumn(name = "customer_id")
     @ManyToOne(optional = false)
     private Customer customerId;
 
